@@ -22,6 +22,8 @@ func ListDictionaries(conn *sql.DB) (err error) {
 
 	defer rows.Close()
 
+	fmt.Println("Existing Dictionaries:")
+	fmt.Println("────────────")
 	for rows.Next() {
 		var name string
 		if err := rows.Scan(&name); err != nil {
@@ -29,6 +31,7 @@ func ListDictionaries(conn *sql.DB) (err error) {
 		}
 		fmt.Println(name)
 	}
+	fmt.Println("────────────")
 
 	return rows.Err()
 }
