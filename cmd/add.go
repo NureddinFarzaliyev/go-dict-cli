@@ -17,8 +17,8 @@ var addCmd = &cobra.Command{
 	Short: "Add record to dictionary",
 	Long: `Add new record consisting of the word, definition and optionally a tag to your existing dictionary.
 
-- Usage:
-add <dict-name> -w <word> -d <definition> -t <tag>`,
+Example:
+  add <dict-name> -w <word> -d <definition> -t <tag>`,
 	Run: func(cmd *cobra.Command, args []string) {
 		w, _ := cmd.Flags().GetString("w")
 		d, _ := cmd.Flags().GetString("d")

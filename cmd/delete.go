@@ -15,10 +15,10 @@ import (
 var deleteCmd = &cobra.Command{
 	Use:   "delete",
 	Short: "Delete a dictionary",
-	Long: `Delete a dictionary by its name
+	Long: `Delete a previously created dictionary by its name
 
-- Usage:
-dict delete <dict-name>`,
+Example:
+  dict delete <dict-name>`,
 	Run: func(cmd *cobra.Command, args []string) {
 		WithDB(func(conn *sql.DB) (err error) {
 			if len(args) == 1 {

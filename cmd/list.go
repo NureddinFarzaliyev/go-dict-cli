@@ -16,11 +16,11 @@ import (
 var listCmd = &cobra.Command{
 	Use:   "list",
 	Short: "List dictionaries or the content of a dictionary",
-	Long: `This command is used to list all of the previously created dictionaries or list the content of a specific dictionary.
+	Long: `List all of the previously created dictionaries or list the content of a specific dictionary.
 
-- Usage:
-dict list - lists all dictionaries
-dict list <dict-name> - lists content of the <dict-name>`,
+Example:
+	List all dictionaries: dict list 
+	List the content of a dictionary: dict list <dict-name>`,
 	Run: func(cmd *cobra.Command, args []string) {
 		WithDB(func(conn *sql.DB) error {
 			if len(args) == 0 {

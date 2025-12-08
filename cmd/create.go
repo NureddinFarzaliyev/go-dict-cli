@@ -15,10 +15,10 @@ import (
 var createCmd = &cobra.Command{
 	Use:   "create",
 	Short: "Create a new dictionary",
-	Long: `This command can be used to create a new dictionary.
+	Long: `Create a new dictionary with default word, definition and tag fields.
 
-- Usage:
-dict create <dict-name>`,
+Example:
+  dict create <dict-name>`,
 	Run: func(cmd *cobra.Command, args []string) {
 		if len(args) == 1 {
 			WithDB(func(conn *sql.DB) error {

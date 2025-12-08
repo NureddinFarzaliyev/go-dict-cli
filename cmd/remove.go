@@ -15,11 +15,10 @@ import (
 var removeCmd = &cobra.Command{
 	Use:   "remove",
 	Short: "Remove a word from a dictionary",
-	Long: `This command is used to remove a word from a dictionary.
+	Long: `Remove a word from a dictionary.
 
 Example:
-  dict remove <dict-name> <word>
-	`,
+  dict remove <dict-name> <word>`,
 	Run: func(cmd *cobra.Command, args []string) {
 		if len(args) != 2 {
 			fmt.Println(cmd.Long)
