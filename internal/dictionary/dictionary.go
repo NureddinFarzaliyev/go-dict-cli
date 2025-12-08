@@ -3,13 +3,9 @@ package dictionary
 import (
 	"database/sql"
 	"fmt"
-	"regexp"
-)
 
-func isValidTableName(name string) bool {
-	valid := regexp.MustCompile(`^[a-zA-Z_][a-zA-Z0-9_]*$`)
-	return valid.MatchString(name)
-}
+	"github.com/NureddinFarzaliyev/go-dict-cli/internal/util"
+)
 
 func ListDictionaries(conn *sql.DB) (err error) {
 	query := `
@@ -38,13 +34,13 @@ func ListDictionaries(conn *sql.DB) (err error) {
 }
 
 func CreateDictionary(conn *sql.DB, dictName string) (err error) {
-	isValid := isValidTableName(dictName)
+	isValid := util.IsValidTableName(dictName)
 	if isValid {
 		query := fmt.Sprintf(`
 			CREATE TABLE %s (
-				word varchar(255), 
-				pos varchar(255), 
-				definition varchar(255)
+				word varchar(255) NOT NULL UNIQUE, 
+				definition varchar(255) NOT NULL,
+				tag varchar(255)
 			)`, dictName)
 
 		_, err := conn.Exec(query)
@@ -61,7 +57,7 @@ func CreateDictionary(conn *sql.DB, dictName string) (err error) {
 }
 
 func DeleteDictionary(conn *sql.DB, dictName string) (err error) {
-	isValid := isValidTableName(dictName)
+	isValid := util.IsValidTableName(dictName)
 	if !isValid {
 		return fmt.Errorf("Cannot use table that starts with numbers or include special characters.")
 	}

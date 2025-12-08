@@ -8,6 +8,7 @@ import (
 	"fmt"
 
 	"github.com/NureddinFarzaliyev/go-dict-cli/internal/dictionary"
+	"github.com/NureddinFarzaliyev/go-dict-cli/internal/word"
 	"github.com/spf13/cobra"
 )
 
@@ -23,11 +24,9 @@ dict list <dict-name> - lists content of the <dict-name>`,
 	Run: func(cmd *cobra.Command, args []string) {
 		WithDB(func(conn *sql.DB) error {
 			if len(args) == 0 {
-				dictionary.ListDictionaries(conn)
-				return nil
+				return dictionary.ListDictionaries(conn)
 			} else if len(args) == 1 {
-				fmt.Println("display content of", args[0])
-				return nil
+				return word.ListWords(conn, args[0])
 			} else {
 				fmt.Println(cmd.Long)
 				return nil

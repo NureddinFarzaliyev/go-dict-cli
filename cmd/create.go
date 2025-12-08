@@ -22,10 +22,10 @@ dict create <dict-name>`,
 	Run: func(cmd *cobra.Command, args []string) {
 		if len(args) == 1 {
 			WithDB(func(conn *sql.DB) error {
-				return dictionary.CreateDictionary(conn, args[0]);
-			})	
+				return dictionary.CreateDictionary(conn, args[0])
+			})
 		} else {
-			fmt.Println(cmd.Long)	
+			fmt.Println(cmd.Long)
 		}
 	},
 }
