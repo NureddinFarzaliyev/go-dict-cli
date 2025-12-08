@@ -16,6 +16,6 @@ func WithDB(fn func(conn *sql.DB) error) {
 	defer conn.Close()
 
 	if err := fn(conn); err != nil {
-		fmt.Println("error:", err)
+		fmt.Println("Error:", err)
 	}
 }

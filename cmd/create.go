@@ -7,6 +7,7 @@ import (
 	"database/sql"
 	"fmt"
 
+	"github.com/NureddinFarzaliyev/go-dict-cli/internal/dictionary"
 	"github.com/spf13/cobra"
 )
 
@@ -21,8 +22,7 @@ dict create <dict-name>`,
 	Run: func(cmd *cobra.Command, args []string) {
 		if len(args) == 1 {
 			WithDB(func(conn *sql.DB) error {
-				fmt.Printf("Created a new dictionary: %v\n", args[0])
-				return nil
+				return dictionary.CreateDictionary(conn, args[0]);
 			})	
 		} else {
 			fmt.Println(cmd.Long)	

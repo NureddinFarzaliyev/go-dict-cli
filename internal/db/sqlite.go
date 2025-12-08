@@ -1,9 +1,9 @@
-package db 
+package db
 
 import (
-    "database/sql"
-    "fmt"
-    _ "github.com/glebarez/go-sqlite"
+	"database/sql"
+	"fmt"
+	_ "github.com/glebarez/go-sqlite"
 )
 
 func Connect() (*sql.DB, error) {
@@ -16,7 +16,7 @@ func Connect() (*sql.DB, error) {
 	db.SetMaxOpenConns(1)
 
 	if err := db.Ping(); err != nil {
-		db.Close();
+		db.Close()
 		return nil, fmt.Errorf("db.Ping: %w", err)
 	}
 
@@ -26,7 +26,7 @@ func Connect() (*sql.DB, error) {
 		return nil, fmt.Errorf("query sqlite_version %w", err)
 	}
 
-	fmt.Println("- SQL:", sqliteVersion)
-    
+	// fmt.Println("- SQL:", sqliteVersion)
+
 	return db, nil
 }
