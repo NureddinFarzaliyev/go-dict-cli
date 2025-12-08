@@ -44,16 +44,7 @@ func ListWords(conn *sql.DB, dict string) (err error) {
 	}
 
 	defer rows.Close()
-
-	for rows.Next() {
-		var word string
-		var definition string
-		var tag string
-
-		rows.Scan(&word, &definition, &tag)
-		fmt.Println(word, definition, tag)
-	}
-
+	util.PrintWordRows(rows)
 	return rows.Err()
 }
 
