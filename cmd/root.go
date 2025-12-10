@@ -11,7 +11,7 @@ import (
 
 // rootCmd represents the base command when called without any subcommands
 var rootCmd = &cobra.Command{
-	Use:   "go-dict-cli",
+	Use:   "dict",
 	Short: "CLI Dictionary",
 	Long: `CLI app to create & manage dictionaries by adding words, 
 describing them with a definition and organizing with tags.`,

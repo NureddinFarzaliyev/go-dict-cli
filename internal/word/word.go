@@ -36,7 +36,7 @@ func ListWords(conn *sql.DB, dict string) (err error) {
 		return fmt.Errorf("%s is not a valid dictionary name", dict)
 	}
 
-	query := fmt.Sprintf("SELECT * FROM %s", dict)
+	query := fmt.Sprintf("SELECT * FROM %s ORDER BY word ASC", dict)
 	rows, execErr := conn.Query(query)
 
 	if execErr != nil {
